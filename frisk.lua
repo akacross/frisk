@@ -2,6 +2,7 @@ script_name("Frisk")
 script_version("0.1")
 script_author("akacross")
 script_url("https://akacross.net/")
+script_tester = {"Taro"}
 
 if getMoonloaderVersion() >= 27 then
 	require 'libstd.deps' {
@@ -114,7 +115,7 @@ function main()
 	if not doesDirectoryExist(path) then createDirectory(path) end
 	if doesFileExist(cfg) then loadIni() else blankIni() end
 	while not isSampAvailable() do wait(100) end
-	sampAddChatMessage("["..script.this.name..'] '.. "{FF1A74}(/friskmenu) Authors: " .. table.concat(thisScript().authors, ", "), -1)
+	sampAddChatMessage("["..script.this.name..'] '.. "{FF1A74}(/friskmenu) Authors: " .. table.concat(thisScript().authors, ", ")..", Testers: ".. table.concat(script_tester, ", "), -1)
 	sampRegisterChatCommand('friskmenu', function() show[0] = not show[0] end)
 	while true do wait(0)
 		if keycheck({k  = {VK_RBUTTON,frisk.key}, t = {'KeyDown', 'KeyPressed'}}) then
